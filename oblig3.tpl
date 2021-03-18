@@ -1,18 +1,18 @@
 /** 
  *   Skjelett for obligatorisk oppgave nr 3 i PROG1003 - OOP.
  *
- *   Programmet inneholder en oversikt alle kjÃ¸retÃ¸yene til en privatperson.
- *   KjÃ¸retÃ¸yene er identifisert via sitt unike chassisnummer (Ã¥tte sifre),
- *   hvor kjÃ¸retÃ¸yene er lagret i en <map> og nummeret er key'en.
+ *   Programmet inneholder en oversikt alle kjøretøyene til en privatperson.
+ *   Kjøretøyene er identifisert via sitt unike chassisnummer (åtte sifre),
+ *   hvor kjøretøyene er lagret i en <map> og nummeret er key'en.
  *   Brukeren/programmet skal kunne:
- *       - se ALLE kjÃ¸retÃ¸yene som er lagret i datastrukturen (map'en)
- *       - legge inn et nytt kjÃ¸retÃ¸y
- *       - endre data om et gitt kjÃ¸retÃ¸y
+ *       - se ALLE kjøretøyene som er lagret i datastrukturen (map'en)
+ *       - legge inn et nytt kjøretøy
+ *       - endre data om et gitt kjøretøy
  *       - skrive datastruktur til fil
  *       - lese datastruktur fra fil
  *
  *   @file    OBLIG3.TPL
- *   @author  Peter BÃ¸hncke Nes, Kristian Jegerud & Frode Haug, NTNU
+ *   @author  Peter Bøhncke Nes, Kristian Jegerud & Frode Haug, NTNU
  */
 
 
@@ -20,23 +20,23 @@
 #include <fstream>               //  ifstream, ofstream
 #include <string>
 #include <map>
-#include "LesData2.h"            //  VerktÃ¸ykasse for lesing av diverse data
+#include "LesData2.h"            //  Verktøykasse for lesing av diverse data
 using namespace std;
 
 
 /**
- *  KjÃ¸retÃ¸y (med merke).
+ *  Kjøretøy (med merke).
  */
 class Kjoretoy {
-private:
-    string merke;
-public:
-    Kjoretoy()  {  merke = "";  }
-    Kjoretoy(ifstream & inn);
-    virtual void endreData() = 0;
-    virtual void lesData();
-    virtual void skrivData() const;
-    virtual void skrivTilFil(ofstream & ut) const;
+  private:
+      string merke;
+  public:
+      Kjoretoy()  {  merke = "";  }
+      Kjoretoy(ifstream & inn);
+      virtual void endreData() = 0;
+      virtual void lesData();
+      virtual void skrivData() const;
+      virtual void skrivTilFil(ofstream & ut) const;
 };
 
 
@@ -44,16 +44,16 @@ public:
  *  Bil (med antall seter og stasjonsvogn/ikke stasjonsvogn).
  */
 class Bil : public Kjoretoy {
-private:
-    int  antallSeter;
-    bool stasjonsvogn;
-public:
-    Bil()  {  antallSeter = 0;  stasjonsvogn = false;  }
-    Bil(ifstream & inn);
-    virtual void endreData();
-    virtual void lesData();
-    virtual void skrivData() const;
-    virtual void skrivTilFil(ofstream & ut) const;
+  private:
+      int  antallSeter;
+      bool stasjonsvogn;
+  public:
+      Bil()  {  antallSeter = 0;  stasjonsvogn = false;  }
+      Bil(ifstream & inn);
+      virtual void endreData();
+      virtual void lesData();
+      virtual void skrivData() const;
+      virtual void skrivTilFil(ofstream & ut) const;
 };
 
 
@@ -61,15 +61,15 @@ public:
  *  Motorsykkel (med motoreffekt).
  */
 class Motorsykkel : public Kjoretoy {
-private:
-    int motoreffekt;
-public:
-    Motorsykkel()  { motoreffekt = 0;  }
-    Motorsykkel(ifstream & inn);
-    virtual void endreData();
-    virtual void lesData();
-    virtual void skrivData() const;
-    virtual void skrivTilFil(ofstream & ut) const;
+  private:
+      int motoreffekt;
+  public:
+      Motorsykkel()  { motoreffekt = 0;  }
+      Motorsykkel(ifstream & inn);
+      virtual void endreData();
+      virtual void lesData();
+      virtual void skrivData() const;
+      virtual void skrivTilFil(ofstream & ut) const;
 };
 
 
@@ -77,16 +77,16 @@ public:
  *  Lastebil (med lengde og makslast).
  */
 class Lastebil : public Kjoretoy {
-private:
-    int lengde;
-    int maksLast;
-public:
-    Lastebil()  {  lengde = 0;  maksLast = 0;  }
-    Lastebil(ifstream & inn);
-    virtual void endreData();
-    virtual void lesData();
-    virtual void skrivData() const;
-    virtual void skrivTilFil(ofstream & ut) const;
+  private:
+      int lengde;
+      int maksLast;
+  public:
+      Lastebil()  {  lengde = 0;  maksLast = 0;  }
+      Lastebil(ifstream & inn);
+      virtual void endreData();
+      virtual void lesData();
+      virtual void skrivData() const;
+      virtual void skrivTilFil(ofstream & ut) const;
 };
 
 
@@ -98,7 +98,7 @@ void skrivMeny();
 void skrivTilFil();
 
 
-map <int, Kjoretoy*> gKjoretoy;    ///<  Datastrukturen med alle kjÃ¸retÃ¸yene.
+map <int, Kjoretoy*> gKjoretoy;    ///<  Datastrukturen med alle kjøretøyene.
 
 
 /**
@@ -113,10 +113,10 @@ int main(void)  {
 
     while (kommando != 'Q') {
         switch (kommando) {
-            case 'N':  nyttKjoretoy();           break;
-            case 'A':  skrivAlleKjoretoy();      break;
-            case 'E':  endreEtKjoretoy();        break;
-            default:   skrivMeny();              break;
+          case 'N':  nyttKjoretoy();           break;
+          case 'A':  skrivAlleKjoretoy();      break;
+          case 'E':  endreEtKjoretoy();        break;
+          default:   skrivMeny();              break;
         }
         kommando = lesChar("\nKommando");
     }
@@ -130,7 +130,7 @@ int main(void)  {
 // ---------------------------------------------------------------------------
 
 /**
- *  Leser merket pÃ¥ kjÃ¸retÃ¸y fra fil.
+ *  Leser merket på kjøretøy fra fil.
  *
  *  @param   inn  - Filobjektet egne data leses inn fra
  */
@@ -140,7 +140,7 @@ Kjoretoy::Kjoretoy(ifstream & inn) {
 
 
 /**
- *  Leser merket pÃ¥ kjÃ¸retÃ¸yet fra brukeren/tastaturet.
+ *  Leser merket på kjøretøyet fra brukeren/tastaturet.
  */
 void Kjoretoy::lesData() {
     //  LAG INNMATEN
@@ -148,7 +148,7 @@ void Kjoretoy::lesData() {
 
 
 /**
- *  Skriver ut merket pÃ¥ kjÃ¸retÃ¸yet pÃ¥ skjermen. 
+ *  Skriver ut merket på kjøretøyet på skjermen. 
  */
 void Kjoretoy::skrivData() const {
     //  LAG INNMATEN
@@ -156,7 +156,7 @@ void Kjoretoy::skrivData() const {
 
 
 /**
- *  Skriver ut merket pÃ¥ kjÃ¸retÃ¸yet til fil.
+ *  Skriver ut merket på kjøretøyet til fil.
  *
  *  @param   ut  - Filobjektet egne data skrives ut til
  */
@@ -177,7 +177,7 @@ Bil::Bil(ifstream & inn) : Kjoretoy(inn) {
 
 
 /**
- *  Gir brukeren mulighet til Ã¥ endre pÃ¥ alle egne data.
+ *  Gir brukeren mulighet til å endre på alle egne data.
  *
  *  @see  skrivData()
  */
@@ -229,7 +229,7 @@ Motorsykkel::Motorsykkel(ifstream & inn) : Kjoretoy(inn) {
 
 
 /**
- *  Tilbyr brukeren Ã¥ endre pÃ¥ alle egne data.
+ *  Tilbyr brukeren å endre på alle egne data.
  *
  *  @see  skrivData()
  */
@@ -249,7 +249,7 @@ void Motorsykkel::lesData() {
 
 
 /**
- *  Skriver baseklassens data og motoreffekt pÃ¥ skjermen.
+ *  Skriver baseklassens data og motoreffekt på skjermen.
  *
  *  @see  Kjoretoy::skrivData()
  */
@@ -259,7 +259,7 @@ void Motorsykkel::skrivData() const {
 
 
 /**
- *  Skriver 'M', baseklassens data og motoreffekt pÃ¥ fil.
+ *  Skriver 'M', baseklassens data og motoreffekt på fil.
  *
  *  @param   ut  - Filobjektet egne data skrives ut til
  *  @see     Kjoretoy::skrivTilTil(...)
@@ -281,7 +281,7 @@ Lastebil::Lastebil(ifstream & inn) : Kjoretoy(inn) {
 
 
 /**
- *  Gir brukeren mulighet til Ã¥ endre pÃ¥ alle egne data.
+ *  Gir brukeren mulighet til å endre på alle egne data.
  *
  *  @see  skrivData()
  */
@@ -301,7 +301,7 @@ void Lastebil::lesData() {
 
 
 /**
- *  Skriver baseklassens data, lengde og makslast pÃ¥ skjermen.
+ *  Skriver baseklassens data, lengde og makslast på skjermen.
  *
  *  @see  Kjoretoy::skrivData()
  */
@@ -336,7 +336,7 @@ void endreEtKjoretoy() {
 
 
 /**
- *  Leser kjÃ¸retÃ¸y inn fra fil, og legger de inn i 'gKjoretoy'.
+ *  Leser kjøretøy inn fra fil, og legger de inn i 'gKjoretoy'.
  *
  *  @see  Bil::Bil(...)
  *  @see  Lastebil::Lastebil(...)
@@ -348,7 +348,7 @@ void lesFraFil() {
 
 
 /**
- *  Legger inn et nytt kjÃ¸retÃ¸y hvis det er plass i datastrukturen.
+ *  Legger inn et nytt kjøretøy hvis det er plass i datastrukturen.
  *
  *  @see  Bil::Bil()
  *  @see  Lastebil::Lastebil()
@@ -361,7 +361,7 @@ void nyttKjoretoy() {
 
 
 /**
- *  Skriver all data om alle kjÃ¸retÃ¸yene.
+ *  Skriver all data om alle kjøretøyene.
  *
  *  @see   virtual Kjoretoy::skrivData()
  */
@@ -371,11 +371,11 @@ void skrivAlleKjoretoy() {
 
 
 /**
- *  Skriver programmets menyvalg/muligheter pÃ¥ skjermen.
+ *  Skriver programmets menyvalg/muligheter på skjermen.
  */
 void skrivMeny() {
-    cout << "\nFÃ¸lgende kommandoer er tilgjengelig:\n"
-         << "\tN - Nytt kjoretÃ¸y (bil, lastebil eller motorsykkel)\n"
+    cout << "\nFølgende kommandoer er tilgjengelig:\n"
+         << "\tN - Nytt kjoretøy (bil, lastebil eller motorsykkel)\n"
          << "\tA - Skriv alle kjoretoyene\n"
          << "\tE - Endre et gitt kjoretoy\n"
          << "\tQ - Quit / avslutt\n\n";
