@@ -1,0 +1,3 @@
+/Users/Skyggen/Edumacation/NTNU/Spring 2021/OOPROG/oblig3/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/Skyggen/Edumacation/NTNU/Spring 2021/OOPROG/oblig3/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/Skyggen/Edumacation/NTNU/Spring 2021/OOPROG/oblig3/cmake-build-debug/CMakeFiles/oblig3.dir
