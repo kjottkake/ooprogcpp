@@ -344,37 +344,30 @@ void endreEtKjoretoy() {
  *  @see  Motorsykkel::Motorsykkel(...)
  */
 void lesFraFil() {
-    //  LAG INNMATEN
-//    ofstream myfile;
-//    myfile.open("oblig3.dta");
-//    myfile << "Writing this to a file.\n";
-//    myfile.close();
-
-    char objectType;
+    ifstream innfil("oblig3.dta");
+    char vehicleType;
     string buffer;
-
-    string line;
-    ifstream myfile ("oblig3.dta");
-    if (myfile.is_open())
-    {
-        cout << "reading data from oblig3.dta\n";
-        while ( getline(myfile,line))
-        {
-            myfile >> buffer;
-
+//    string line;
+    if (innfil){
+        cout << "reading from oblig3.dta\n";
+        while (getline(innfil, buffer)){
             if (buffer.substr(9,1) == "B") {
+//                cout << line;
                 cout << "vehicle is a passenger car. \n";
-            } else if (buffer.substr(9, 1) == "L") {
-                cout << "vehicle is a transport car. \n";
-            } else if (buffer.substr(9,1 ) == "M"){
-                cout << "vehicle is a motorcycle. \n";
+            } else if  (buffer.substr(9,1) == "M") {
+//                cout << line;
+                cout << "vehicle is a motorcycle.\n";
+            } else if  (buffer.substr(9,1) == "L") {
+                cout << "vehicle is a transport vehicle.\n";
             }
-            cout << line << '\n'; //prints file content
+            getline(innfil, buffer);
         }
-        myfile.close();
+        innfil.close();
+    } else {
+        cout << "can't find file.\n";
     }
 
-    else cout << "Unable to open file";
+
 
 //    return 0;
 }
