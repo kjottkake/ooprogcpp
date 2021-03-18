@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/Skyggen/Edumacation/NTNU/Spring 2021/OOPROG/oblig3/LesData2.h
+iostream
+-
+iomanip
+-
+cctype
+-
+cstdlib
+-
+
+/Users/Skyggen/Edumacation/NTNU/Spring 2021/OOPROG/oblig3/main.cpp
+iostream
+-
+fstream
+-
+string
+-
+map
+-
+LesData2.h
+/Users/Skyggen/Edumacation/NTNU/Spring 2021/OOPROG/oblig3/LesData2.h
+

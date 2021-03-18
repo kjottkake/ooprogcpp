@@ -113,6 +113,7 @@ int main(void)  {
 
     while (kommando != 'Q') {
         switch (kommando) {
+            case 'T':   lesFraFil(); break;
             case 'N':  nyttKjoretoy();           break;
             case 'A':  skrivAlleKjoretoy();      break;
             case 'E':  endreEtKjoretoy();        break;
@@ -344,6 +345,38 @@ void endreEtKjoretoy() {
  */
 void lesFraFil() {
     //  LAG INNMATEN
+//    ofstream myfile;
+//    myfile.open("oblig3.dta");
+//    myfile << "Writing this to a file.\n";
+//    myfile.close();
+
+    char objectType;
+    string buffer;
+
+    string line;
+    ifstream myfile ("oblig3.dta");
+    if (myfile.is_open())
+    {
+        cout << "reading data from oblig3.dta\n";
+        while ( getline(myfile,line))
+        {
+            myfile >> buffer;
+
+            if (buffer.substr(9,1) == "B") {
+                cout << "vehicle is a passenger car. \n";
+            } else if (buffer.substr(9, 1) == "L") {
+                cout << "vehicle is a transport car. \n";
+            } else if (buffer.substr(9,1 ) == "M"){
+                cout << "vehicle is a motorcycle. \n";
+            }
+            cout << line << '\n'; //prints file content
+        }
+        myfile.close();
+    }
+
+    else cout << "Unable to open file";
+
+//    return 0;
 }
 
 
