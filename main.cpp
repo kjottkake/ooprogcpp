@@ -137,6 +137,8 @@ int main(void)  {
  */
 Kjoretoy::Kjoretoy(ifstream & inn) {
     //  LAG INNMATEN
+    inn >> merke;
+
 }
 
 
@@ -153,6 +155,7 @@ void Kjoretoy::lesData() {
  */
 void Kjoretoy::skrivData() const {
     //  LAG INNMATEN
+    cout << "Model: " << merke;
 }
 
 
@@ -353,7 +356,13 @@ void lesFraFil() {
         while (getline(innfil, buffer)){
             if (buffer.substr(9,1) == "B") {
 //                cout << line;
+//                gPublikasjoner.push_back(new Bok(innfil)
+//                gKjoretoy.push_back(new Bil(innfil)); //for vectors not for maps
+//                mengde1.insert(pair <int, string> (5, "Elvira"));
+
+                  gKjoretoy.insert(pair <int, Kjoretoy*> (12345678, new Bil(innfil))); //creates new member of map and also creates an object of new Bil.
                 cout << "vehicle is a passenger car. \n";
+
             } else if  (buffer.substr(9,1) == "M") {
 //                cout << line;
                 cout << "vehicle is a motorcycle.\n";
@@ -393,6 +402,8 @@ void nyttKjoretoy() {
  */
 void skrivAlleKjoretoy() {
     //  LAG INNMATEN
+    int numVehicles = 0;
+    cout << "Number of vehicles: " << numVehicles;
 }
 
 
