@@ -350,21 +350,16 @@ void lesFraFil() {
     ifstream innfil("oblig3.dta");
     char vehicleType;
     string buffer;
-//    string line;
+    int chassisNr;
+
     if (innfil){
         cout << "reading from oblig3.dta\n";
         while (getline(innfil, buffer)){
-            if (buffer.substr(9,1) == "B") {
-//                cout << line;
-//                gPublikasjoner.push_back(new Bok(innfil)
-//                gKjoretoy.push_back(new Bil(innfil)); //for vectors not for maps
-//                mengde1.insert(pair <int, string> (5, "Elvira"));
 
+            if (buffer.substr(9,1) == "B") {
                   gKjoretoy.insert(pair <int, Kjoretoy*> (12345678, new Bil(innfil))); //creates new member of map and also creates an object of new Bil.
                 cout << "vehicle is a passenger car. \n";
-
             } else if  (buffer.substr(9,1) == "M") {
-//                cout << line;
                 cout << "vehicle is a motorcycle.\n";
             } else if  (buffer.substr(9,1) == "L") {
                 cout << "vehicle is a transport vehicle.\n";
@@ -376,9 +371,25 @@ void lesFraFil() {
         cout << "can't find file.\n";
     }
 
+//    if (innfil){
+//        cout << "reading from oblig3.dta\n";
+//        while (!innfil.eof()){
+//            getline(innfil, buffer);
+//            if (buffer.substr(9,1) == "B") {
+//                gKjoretoy.insert(pair <int, Kjoretoy*> (12345678, new Bil(innfil))); //creates new member of map and also creates an object of new Bil.
+//                cout << "vehicle is a passenger car. \n";
+//            } else if  (buffer.substr(9,1) == "M") {
+//                cout << "vehicle is a motorcycle.\n";
+//            } else if  (buffer.substr(9,1) == "L") {
+//                cout << "vehicle is a transport vehicle.\n";
+//            }
+////            getline(innfil, buffer);
+//        }
+//        innfil.close();
+//    } else {
+//        cout << "can't find file.\n";
+//    }
 
-
-//    return 0;
 }
 
 
